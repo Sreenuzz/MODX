@@ -54,7 +54,7 @@ class _StudentHomePageState extends State<StudentHomePage> {
                   value: "${(attendanceProgress * 100).toInt()}%",
                   progress: attendanceProgress,
                   color: Colors.greenAccent,
-                  width: 200, // Adjust the width
+                  width: 110, // Adjust the width
                   height: 150, // Adjust the height
                   onTap: () {
                     Navigator.push(
@@ -70,8 +70,8 @@ class _StudentHomePageState extends State<StudentHomePage> {
                   value: "$assignmentsPending",
                   icon: Icons.assignment,
                   color: Colors.yellowAccent,
-                  width: 120, // Adjust the width
-                  height: 120, // Adjust the height
+                  width: 130, // Set the width consistent with the other cards
+                  height: 150, // Ensure the height is also consistent
                   onTap: () {
                     Navigator.push(
                       context,
@@ -86,8 +86,8 @@ class _StudentHomePageState extends State<StudentHomePage> {
                   value: "$notices",
                   icon: Icons.notifications,
                   color: Colors.redAccent,
-                  width: 120, // Adjust the width
-                  height: 120, // Adjust the height
+                  width: 80, // Adjust the width
+                  height: 150, // Adjust the height
                   onTap: () {
                     Navigator.push(
                       context,
@@ -134,7 +134,7 @@ class _StudentHomePageState extends State<StudentHomePage> {
                     Icon(Icons.account_circle, color: Colors.blueAccent, size: 28),
                     SizedBox(width: 20),
                     Text(
-                      "update Profile",
+                      "Update Profile",
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -208,14 +208,14 @@ class _StudentHomePageState extends State<StudentHomePage> {
     IconData? icon,
     required Color color,
     required VoidCallback onTap,
-    required int width,
-    required int height,
+    required double width,
+    required double height,
   }) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 100,
-        height: 140,
+        width: width,
+        height: height,
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: Colors.grey[850],
@@ -276,8 +276,10 @@ class _StudentHomePageState extends State<StudentHomePage> {
           ),
         ),
         const SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        // Use a wrap to ensure the notices are aligned properly
+        Wrap(
+          spacing: 10.0,
+          runSpacing: 10.0,
           children: [
             _buildNoticeCard(
               title: "Teacher Notices",
@@ -286,7 +288,7 @@ class _StudentHomePageState extends State<StudentHomePage> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const NoticeApp ()),
+                  MaterialPageRoute(builder: (context) => const NoticeApp()),
                 );
               },
             ),
@@ -352,7 +354,7 @@ class _StudentHomePageState extends State<StudentHomePage> {
 
   Widget _buildFeatureButtons(BuildContext context) {
     List<Map<String, dynamic>> features = [
-      {"icon": Icons.notifications, "label": "Admin Notices", "route":  NotificationViewingPage()},
+      {"icon": Icons.notifications, "label": "Admin Notices", "route": NotificationViewingPage()},
       {"icon": Icons.book, "label": "View Notes", "route": CSStudentNotesPage()},
       {"icon": Icons.calendar_month, "label": "Apply for Leave", "route": const LeaveApplicationPage()},
       {"icon": Icons.check_circle, "label": "Mark Attendance", "route": const MarkAttendancePages()},

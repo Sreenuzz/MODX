@@ -31,7 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   file_picker: ^5.2.2  # Example version, it will fetch the latest version
-
+  fl_chart: ^0.70.2  # Add this line for the chart package
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
